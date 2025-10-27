@@ -1,0 +1,19 @@
+button{
+    border: 5px solid black;
+}
+
+#b2{
+    border: 5px slateblue;
+}
+
+.fondo-rojo{
+    background-color: red;
+}
+
+.fondo-azul{
+    background-color: blue;
+}
+
+.borde-verde{
+    border: 5px solid green;
+}

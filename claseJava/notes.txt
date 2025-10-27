@@ -1,0 +1,73 @@
+Clase #1.
+
+Cuerpo archivo html
+
+<!DOCTYPE html> 
+<html lang="en"> // atributo lang -> lenguage
+
+<head>  
+
+    <meta charset="UTF-8">  --> como se manejan los datos 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clase1</title> --> nombre de la pagina en la esquina sup. izq.
+
+</head>
+
+<body>  // --> contiene todo lo que muestra la pagina 
+    <input type="color"> 
+</body>
+
+</html>
+
+--------Esta estructura se conoce como el DOM -> Document Object Model
+--> La estructura nos indica que en el DOM html es el padre
+--> tiene como hijos (es decir las contiene) a head y body
+--> head tiene como hijos : title y demas etiquetas // body --> tiene como hijos todo lo que se visualiza en la pagina
+--> head y body son hermanos
+--> las cosas que tengan dentro son hermanos
+
+* <body></body> --> contine todas las cosas que se muestran en la pagina
+* todas las etiquetas de los elementos html son en minisculas
+* Los atributos (son propios de una etiqueta html). Los props son en js
+*<input type="text"> --> type --> atributo para indicar el tipo de input
+*Todos los atributos van solamente en la etiquetas de apertura
+
+
+*Cada elemento tiene un id (Deberian ser distintos pero el navegador no advierte si hay repetidos )
+* si se ponene los atributos con el nombre de una etiqueta selecciona todos los elemento de dicho tipo y los cambia
+* Para modificar uno en especifico usar id's
+
+
+* Selectores:  usan # con el id del tag para modificarlo en un bloque con {}
+
+* Clases : usan .className para declarar un conjunto de atributos que seran luego aplicados a ciertos elementos de html 
+asi <tag class: "className1 className2 ..." ></tag> / mas un bloque en {}
+
+*En html todo se puede representar como una caja
+--------------------------etiquetas---------------------------
+<input type="color"> 
+<button></button>  
+    -puede asignarle el atributo hidden para que el boton quede oculto
+    -
+
+<style></style> --> detro va el codigo css
+
+------------------nveles de poder*****************************
+
+!important > inline > id > Class > HTML element
+
+!important se añade al final ej: 
+
+--------------------------tipos de como escribir css----------------------------
+
+Inline :<button style= "background-color=cyan;" > Hola </button> 
+Interno: <style></style> dentro de html
+Externo: <link rel="stylesheet" href="style.css"> --> usa una etiqueta con la relacion de la hoja, y el nombre del archivo css
+
+----------------------------------Display---------------------------------
+
+Block: que va a ocupar 
+
+--Leer pag de flex, grid (home)
+--Primer proyecto : app de calculo matricial. Se entrega una semana despues del examen.  
