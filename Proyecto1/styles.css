@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #fff5ea;
+}
+
+.container{
+    margin: 0px;
+    font-size: 1.1rem;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    font-family: Tahoma;
+    text-align: center;
+}
+
+.header-part1{
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+    width: 60%;
+    height: 50%;
+    background-color: #ded9fb;
+    color:#2e27aa;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom: 5px solid #fff;
+}
+
+.header-all{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    border: 3px ridge #000;
+    border-bottom: transparent;
+}
+
+#header-all p {
+    margin-top: 12px;
+    max-width: 600px;
+    text-align: center;
+    padding: 5px;
+}
+
+.menu{
+    width: 100%;
+    height: 100px;
+    border: 4px ridge #a1a1a1 ;
+    border-left: #fff;
+    border-right: #fff;
+    flex-basis: auto;
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #fff;
+ 
+}
+
+.nav-opt{
+    list-style: none;
+}
+
+.nav-opt a{
+    text-decoration: none;
+    color: #2e27aa;
+    font-size:1.2rem;
+}
+
+.sumaC{
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+.restaC{
+    grid-column: 4/5;
+    grid-row: 1/2;
+}
+
+.multiplicacionM{
+    grid-column: 6/8;
+    grid-row: 1/2;
+}
+.multiplicacionE{
+    grid-column: 9/11;
+    grid-row: 1/2;
+}
+.Transpuesta{
+    grid-column: 1/3;
+    grid-row: 2/3;
+}
+.matrizID{
+    grid-column: 4/6;
+    grid-row: 2/3;
+}
+.matrizInv{
+    grid-column: 7/9;
+    grid-row: 2/3;
+}
+.Determinante{
+    grid-column:10/12;
+    grid-row: 2/3;
+}
