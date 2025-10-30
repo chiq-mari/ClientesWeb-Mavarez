@@ -103,3 +103,60 @@ body{
     grid-column:10/12;
     grid-row: 2/3;
 }
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#suma{
+    font-family: Tahoma;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    width: 90%;
+    min-height: 60px;
+    background-color: #fff;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    border: 2px solid #d1cece;
+}
+
+.headerSuma{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    gap: 30px;  /* Espaciado entre elementos */
+    border-bottom: 1px solid #d1cece;
+}
+
+#SumaTitle{
+    width: 40%;
+    height:60px;
+    background-color: #ded9fb;
+    color: #2e27aa;
+    text-align: center;
+    align-content: center;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;   
+    
+}
+
+#crearSuma{
+    background-color: #2e27aa;
+    color: #fff;
+    border-radius: 20px;
+    border-style: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#crearSuma:hover {
+    transform: scale(1.05);
+}

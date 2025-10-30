@@ -14,20 +14,38 @@
         </header>
         <nav class="nav-tab">
             <ul class="menu">  
-                <li class="nav-opt sumaC" ><a href="suma" >Suma</a></li>        
-                <li class="nav-opt restaC"><a href="resta">Resta</a></li>        
-                <li class="nav-opt multiplicacionM"><a href="multiplicacionMatricial">Multiplicación Matricial</a></li>        
-                <li class="nav-opt multiplicacionE"><a href="multiplicacionEscalar">multiplicación Escalar</a></li>        
-                <li class="nav-opt Transpuesta"><a href="Transpuesta">Transposición de Matriz</a></li>        
-                <li class="nav-opt matrizID"><a href="matrizID">Matriz Identidad</a></li>                        
-                <li class="nav-opt matrizInv"><a href="matrizInv">Matriz Inversa</a></li>
-                <li class="nav-opt Determinante"><a href="Determinante">Determinante</a></li>
+                <li class="nav-opt sumaC" ><a href="#suma" >Suma</a></li>        
+                <li class="nav-opt restaC"><a href="#resta">Resta</a></li>        
+                <li class="nav-opt multiplicacionM"><a href="#multiplicacionMatricial">Multiplicación Matricial</a></li>        
+                <li class="nav-opt multiplicacionE"><a href="#multiplicacionEscalar">Multiplicación Escalar</a></li>        
+                <li class="nav-opt Transpuesta"><a href="#Transpuesta">Transposición de Matriz</a></li>        
+                <li class="nav-opt matrizID"><a href="#matrizID">Matriz Identidad</a></li>                        
+                <li class="nav-opt matrizInv"><a href="#matrizInv">Matriz Inversa</a></li>
+                <li class="nav-opt Determinante"><a href="#Determinante">Determinante</a></li>
             </ul>
         </nav>
     </div>
 
     <main>
-        <section id="suma"></section>
+        <section id="suma">
+            <div class="headerSuma">
+                <div id="SumaTitle"> <h2>Suma</h2></div>
+                <div class="matrizSInputs"></div>
+                <p>Matriz A</p>
+                <input type="number" placeholder="n"  min="2" max="10" id="sizeMatrizA">
+                <p>Matriz B</p>
+                <input type="number" placeholder="n" min="2" max="10" id="sizeMatrizB">
+                <input type="button" value="Crear" id="crearSuma">
+            </div>
+            <div id="contenidoSuma" hidden>
+                <p>Ingrese los valores</p>
+                <input type="button" value="Calcular">
+
+
+            </div>
+        </section>
+
+
         <section id="resta"></section>
         <section id="multiplicacionMatricial"></section>
         <section id="multiplicacionEscalar"></section>
