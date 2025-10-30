@@ -200,6 +200,9 @@ main{
     border: 1px solid black;
     padding: 0;
     box-sizing: border-box;
+    font-size: 15px;           
+    text-align: center;        
+    vertical-align: middle;
 }
 
 .matriz-cells input{
