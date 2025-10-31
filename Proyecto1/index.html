@@ -176,30 +176,31 @@
             </div>
 
         </section>
-        <section id="Transpuesta">
+        <section class="seccion" id="Transpuesta">
             <div class="headerSeccion">
-                <div class= "SeccionTitle" id="SumaTitle"> <h2>Suma</h2></div>
+                <div class= "SeccionTitle" id="SumaTitle"> <h2>Transposición de una Matriz</h2></div>
                 <p>Matriz A</p>
                 <input type="number" placeholder="n"  min="2" max="10" id="sizeMatrizATranspuesta">
-                <input type="button" value="Crear" id="crearSuma" class="botonCrear">
+                <input type="button" value="Crear" id="crearTranspuesta" class="botonCrear">
             </div>
 
             <div id="contenidoTranspuesta" hidden>
                 <p style="margin: 10px;">Ingrese los valores</p>
 
                 <div class="matrices-container">
-                    <div class="seccionMatriz" id="seccionSumaMatrizA">Matriz A</div>
+                    <div class="seccionMatriz" id="seccionTranspuestaMatrizA">Matriz A</div>
                     <h3 class="symbol"><span>&rarr;</span></h3>
-                    <div class ="seccionMatriz" id="seccionSumaResultado">A+B</div>
+                    <div class ="seccionMatriz" id="seccionTranspuestaResultado"><p>A<sup>t</sup></p></div>
                 </div>
 
                 <div class="seccionButtons">
-                    <input id= "btResultadoSuma" type="button" value="Resultado"        style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
-                    <input id= "btLimpiarSuma" type="button" value="Limpiar" style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
-                    <input id= "btGenerarValoresSuma" type="button" value=" Generar valores"          style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                    <input id= "btResultadoTranspuesta" type="button" value="Resultado"        style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                    <input id= "btLimpiarTranspuesta" type="button" value="Limpiar" style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                    <input id= "btGenerarValoresTranspuesta" type="button" value=" Generar valores"          style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
                 </div>
             </div>
         </section>
+
         <section id="matrizID"></section>
         <section id="matrizInv"></section>
         <section id="Determinante"></section>

@@ -844,3 +844,152 @@ btGenerarMultiplicacionEscalar.addEventListener("click", ()=>{
     }
 });
 
+//////////////////////////////////////////matriz Transpuesta////////////////////////////////////////////
+
+
+const handleCrearTranspuesta=()=>{
+    let sizeMatrizATranspuesta = document.getElementById("sizeMatrizATranspuesta").value;
+
+    if(!Boolean(sizeMatrizATranspuesta)){
+        alertDimensionesIncompletas();
+        return;
+    }
+
+    if (sizeMatrizATranspuesta < 2 || sizeMatrizATranspuesta > 10) {
+        alertMinMaxDimensiones();
+        return;
+    }
+
+    //ambas dimensiones estan
+    let a=parseInt(sizeMatrizATranspuesta);
+
+    // Ajusta la altura de la sección
+    let seccionTranspuesta= document.getElementById("Transpuesta");
+    seccionTranspuesta.style.height = "auto";
+
+    const contenidoTranspuesta= document.getElementById("contenidoTranspuesta");
+
+    if(contenidoTranspuesta.hidden){
+        contenidoTranspuesta.hidden=false;
+        seccionTranspuesta.style.borderRadius= "20px";
+
+
+        let matrixTranspuestaA =createMatriz(a, a, 'matriz-transpuesta-A');
+        //containers
+        let seccionSumaMatrizA=document.getElementById("seccionTranspuestaMatrizA");
+        let seccionTranspuestaResultado = document.getElementById("seccionTranspuestaResultado");
+    
+        //clear any existing matrices( prevent duplicates)
+        seccionTranspuestaMatrizA.innerHTML="Matriz A"
+        seccionTranspuestaResultado.innerHTML="<p>A<sup>t</sup></p>";
+        //
+        seccionTranspuestaMatrizA.appendChild(matrixTranspuestaA);
+        return;
+    }
+    else{
+        clearTranspuesta();
+        return;
+    }
+
+};
+
+
+const handleResultadoTranspuesta=()=>{
+    const contenidoTranspuesta= document.getElementById("contenidoTranspuesta");
+    
+    if(!matrizCompleta('matriz-transpuesta-A')){
+        alertResultado();
+        return;
+    }
+    //si esta la matriz completa, resuelve
+
+    let matrixTranspuestaA=document.getElementById('matriz-transpuesta-A');
+
+    //size
+    let sizeMatrizResultado= parseInt(document.getElementById("sizeMatrizATranspuesta").value);
+    const seccionTranspuestaResultado = document.getElementById("seccionTranspuestaResultado");
+    //remove any previous thing
+    const existingResult = document.getElementById("matriz-transpuesta-resultado");
+    if (existingResult) {existingResult.remove();}
+
+    //ready to create
+    const matrixTranspuestaResultado= createMatriz(sizeMatrizResultado, sizeMatrizResultado, 'matriz-transpuesta-resultado');
+    //adjunta
+    seccionTranspuestaResultado.appendChild(matrixTranspuestaResultado);
+    seccionTranspuestaResultado.hidden=false;
+    //llena
+    for(let i = 1; i <=sizeMatrizResultado; i++){
+        for(let j = 1; j <=sizeMatrizResultado; j++){
+            let matrixCellR= document.getElementById(`matriz-transpuesta-resultado_${i}_${j}`); 
+            let matrixCellA= document.getElementById(`matriz-transpuesta-A_${j}_${i}`);
+            matrixCellR.value= Number(matrixCellA.value);
+        }
+    }
+};
+
+const clearTranspuesta = ()=>{
+    //secciones
+    const seccionTranspuestaResultado = document.getElementById("seccionTranspuestaResultado");
+    const seccionTranspuestaMatrizA=document.getElementById("seccionTranspuestaMatrizA");
+    //matrices
+    const matrixTranspuestaA=document.getElementById('matriz-transpuesta-A');
+    const matrixTranspuestaResultado=document.getElementById('matriz-transpuesta-resultado');
+
+    //remove
+    if (seccionTranspuestaMatrizA.contains(matrixTranspuestaA)) {seccionTranspuestaMatrizA.removeChild(matrixTranspuestaA)};
+    if (seccionTranspuestaResultado && seccionTranspuestaResultado.contains(matrixTranspuestaResultado)) {seccionTranspuestaResultado.removeChild(matrixTranspuestaResultado)};
+    //ocultar
+    const contenidoTranspuesta= document.getElementById("contenidoTranspuesta");
+    contenidoTranspuesta.hidden=true;
+
+    //reset fields
+    document.getElementById("sizeMatrizATranspuesta").value = "";
+};
+
+
+const ResetTranspuesta= ()=>{
+
+    const matrices = [
+        'matriz-transpuesta-A'
+    ];
+
+    // Recorre cada matriz y limpia los valores
+    matrices.forEach(id => {
+        const matriz = document.getElementById(id);
+        if (matriz) {
+            const celdas = matriz.querySelectorAll("input");
+            celdas.forEach(celda => celda.value = ""); // vacía cada input
+        }
+    });
+
+    const seccionTranspuestaResultado = document.getElementById("seccionTranspuestaResultado");
+    const matrixTranspuestaResultado=document.getElementById('matriz-transpuesta-resultado');
+
+    if (matrixTranspuestaResultado && seccionTranspuestaResultado.contains(matrixTranspuestaResultado)) 
+    {
+        seccionTranspuestaResultado.removeChild(matrixTranspuestaResultado);
+    };
+    
+};
+
+const btCrearTranspuesta=document.getElementById("crearTranspuesta");
+btCrearTranspuesta.addEventListener("click", handleCrearTranspuesta);
+
+const btResultadoTranspuesta=document.getElementById("btResultadoTranspuesta");
+btResultadoTranspuesta.addEventListener("click", handleResultadoTranspuesta);
+
+const  btLimpiarTranspuesta= document.getElementById("btLimpiarTranspuesta");
+btLimpiarTranspuesta.addEventListener("click", ResetTranspuesta);
+
+const  btGenerarTranspuesta= document.getElementById("btGenerarValoresTranspuesta");
+btGenerarTranspuesta.addEventListener("click", ()=>{
+
+    if(!matrizEmpty('matriz-transpuesta-A') ){
+        alertaVaciar();
+        return;
+    }
+    let sizeMatrizATranspuesta= parseInt(document.getElementById("sizeMatrizATranspuesta").value);
+
+    handleGenerarValores(sizeMatrizATranspuesta, sizeMatrizATranspuesta, 'matriz-transpuesta-A');
+} );
+
