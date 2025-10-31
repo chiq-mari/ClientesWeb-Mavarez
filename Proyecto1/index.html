@@ -178,10 +178,12 @@
         </section>
         <section class="seccion" id="Transpuesta">
             <div class="headerSeccion">
-                <div class= "SeccionTitle" id="SumaTitle"> <h2>Transposición de una Matriz</h2></div>
-                <p>Matriz A</p>
-                <input type="number" placeholder="n"  min="2" max="10" id="sizeMatrizATranspuesta">
-                <input type="button" value="Crear" id="crearTranspuesta" class="botonCrear">
+                <div class= "SeccionTitle" id="TranspuestaTitle"> <h2>Transposición de una Matriz</h2></div>
+                <div class="headerPanel">
+                    <p>Matriz A</p>
+                    <input type="number" placeholder="n"  min="2" max="10" id="sizeMatrizATranspuesta">
+                    <input type="button" value="Crear" id="crearTranspuesta" class="botonCrear">
+                </div>
             </div>
 
             <div id="contenidoTranspuesta" hidden>
@@ -201,7 +203,29 @@
             </div>
         </section>
 
-        <section id="matrizID"></section>
+        <section class = "seccion" id="matrizID">
+            <div class="headerSeccion">
+                <div class= "SeccionTitle" id="matrizIDTitle"> <h2>Matriz Identidad</h2></div>
+                <div class="headerPanel">
+                    <p>I<sub>n x n</sub>
+                    <input type="number" placeholder="n"  min="2" max="10" id="sizeMatrizID">
+                    <input type="button" value="Crear" id="crearMatrizID" class="botonCrear">
+                </div>
+            </div>
+
+            <div id="contenidoMatrizID" hidden>
+                <div class="matrices-container">
+                    <div class="seccionMatriz" id="seccionMatrizID"><p>I<sub>n x n</sub></div>
+                    <h3 class="symbol"><span>&rarr;</span></h3>
+                    <div class ="seccionMatriz" id="seccionMatrizIDResultado"></div>
+                </div>
+
+                <div class="seccionButtons">
+                    <input id= "btLimpiarMatrizID" type="button" value="Iniciar" style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                </div>
+            </div>
+        </section>
+
         <section id="matrizInv"></section>
         <section id="Determinante"></section>
 

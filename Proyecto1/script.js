@@ -993,3 +993,89 @@ btGenerarTranspuesta.addEventListener("click", ()=>{
     handleGenerarValores(sizeMatrizATranspuesta, sizeMatrizATranspuesta, 'matriz-transpuesta-A');
 } );
 
+/////////////////////////////////////////////////matriz Inversa///////////////////////////////////////////
+
+
+const handleCrearMatrizID=()=>{
+    let sizeMatrizID = document.getElementById("sizeMatrizID").value;
+
+    if(!Boolean(sizeMatrizID)){
+        alertDimensionesIncompletas();
+        return;
+    }
+
+    if (sizeMatrizID < 2 ||  sizeMatrizID > 10) {
+        alertMinMaxDimensiones();
+        return;
+    }
+
+    //las dimensiones estan
+    let a=parseInt(sizeMatrizID);
+
+
+    // Ajusta la altura de la sección
+    let seccionMatrizID = document.getElementById("matrizID");
+    seccionMatrizID.style.height = "auto";
+
+    const contenidoMatrizID= document.getElementById("contenidoMatrizID");
+
+    if(contenidoMatrizID.hidden){
+        contenidoMatrizID.hidden=false;
+        seccionMatrizID.style.borderRadius= "20px";
+
+
+        let matrizID =createMatriz(a, a, 'matriz-ID');
+        //containers
+        let seccionMatrizIDResultado = document.getElementById("seccionMatrizIDResultado");
+    
+        //clear any existing matrices( prevent duplicates)
+        seccionMatrizIDResultado.innerHTML="";
+        //
+        seccionMatrizIDResultado.appendChild(matrizID);
+
+        for(let i = 1; i <=a; i++){
+            for(let j = 1; j <=a; j++){
+                let matrixCellR= document.getElementById(`matriz-ID_${i}_${j}`);
+                if (i==j){
+                    matrixCellR.value=1;
+                }
+                else{
+                    matrixCellR.value=0;
+                }
+                matrixCellR.readOnly=true;
+            }
+        }
+        return;
+    }
+    else{
+        clearMatrizID();
+        return;
+    }
+};
+
+
+const clearMatrizID = ()=>{
+    //secciones
+    let contenidoMatrizID= document.getElementById("contenidoMatrizID");
+    let seccionMatrizIDResultado = document.getElementById("seccionMatrizIDResultado");
+    //matrices
+    const matrizID=document.getElementById('matriz-ID');
+
+    //remove
+    if (seccionMatrizIDResultado.contains(matrizID)) {seccionMatrizIDResultado.removeChild(matrizID)};
+    //ocultar
+    contenidoMatrizID.hidden=true;
+
+    //reset fields
+    document.getElementById("sizeMatrizID").value="";
+};
+
+const btCrearMatrizID=document.getElementById("crearMatrizID");
+btCrearMatrizID.addEventListener("click", handleCrearMatrizID);
+
+
+const  btLimpiarMatrizID= document.getElementById("btLimpiarMatrizID");
+btLimpiarMatrizID.addEventListener("click", clearMatrizID);
+
+//////////////////////////////////////Determinante/////////////////////////////
+
