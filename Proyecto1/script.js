@@ -88,7 +88,7 @@ const handleCrearSuma=()=>{
         return;
     }
 
-    if (sizeMatrizASuma < 2 || sizeMatrizBSuma < 2) {
+    if (sizeMatrizASuma < 2 || sizeMatrizBSuma < 2 || sizeMatrizASuma > 10 || sizeMatrizBSuma > 10) {
         alertMinMaxDimensiones();
         return;
     }
@@ -219,6 +219,32 @@ const handleGenerarValores=(r, c, matrixID)=>{
     }
 };
 
+const ResetSuma= ()=>{
+
+    const matrices = [
+        'matriz-suma-A',
+        'matriz-suma-B',
+    ];
+
+    // Recorre cada matriz y limpia los valores
+    matrices.forEach(id => {
+        const matriz = document.getElementById(id);
+        if (matriz) {
+            const celdas = matriz.querySelectorAll("input");
+            celdas.forEach(celda => celda.value = ""); // vacía cada input
+        }
+    });
+
+    const seccionSumaResultado = document.getElementById("seccionSumaResultado");
+    const matrixSumaResultado=document.getElementById('matriz-suma-resultado');
+
+    if (matrixSumaResultado  && seccionSumaResultado.contains(matrixSumaResultado)) 
+    {
+        seccionSumaResultado.removeChild(matrixSumaResultado);
+    };
+    
+};
+
 
 const btCrearSuma=document.getElementById("crearSuma");
 btCrearSuma.addEventListener("click", handleCrearSuma);
@@ -227,7 +253,7 @@ const btResultadoSuma=document.getElementById("btResultadoSuma");
 btResultadoSuma.addEventListener("click", handleResultadoSuma);
 
 const  btLimpiarSuma= document.getElementById("btLimpiarSuma");
-btLimpiarSuma.addEventListener("click", clearSum);
+btLimpiarSuma.addEventListener("click", ResetSuma);
 
 const  btGenerarSuma= document.getElementById("btGenerarValoresSuma");
 btGenerarSuma.addEventListener("click", ()=>{
@@ -256,7 +282,7 @@ const handleCrearResta=()=>{
         return;
     }
 
-    if (sizeMatrizAResta < 2 || sizeMatrizBResta < 2) {
+    if (sizeMatrizAResta < 2 || sizeMatrizBResta < 2 || sizeMatrizAResta > 10 || sizeMatrizBResta > 10) {
         alertMinMaxDimensiones();
         return;
     }
@@ -445,6 +471,7 @@ btGenerarResta.addEventListener("click", ()=>{
 const handleCrearMultiplicacionMatricial=()=>{
     let sizeMatrizAMultiplicacionMatricialRow = document.getElementById("sizeMatrizAMultiplicacionMatricialRow").value;
     let sizeMatrizAMultiplicacionMatricialColumn = document.getElementById("sizeMatrizAMultiplicacionMatricialColumn").value;
+    document.getElementById("valorKMultiplicacionEscalar").readOnly=true;
 
     let sizeMatrizBMultiplicacionMatricialRow = document.getElementById("sizeMatrizBMultiplicacionMatricialRow").value;
     let sizeMatrizBMultiplicacionMatricialColumn = document.getElementById("sizeMatrizBMultiplicacionMatricialColumn").value;
@@ -454,7 +481,7 @@ const handleCrearMultiplicacionMatricial=()=>{
         return;
     }
 
-    if (sizeMatrizAMultiplicacionMatricialRow< 2 || sizeMatrizAMultiplicacionMatricialColumn<2 || sizeMatrizBMultiplicacionMatricialRow< 2 ||  sizeMatrizBMultiplicacionMatricialColumn<2) {
+    if (sizeMatrizAMultiplicacionMatricialRow< 2 || sizeMatrizAMultiplicacionMatricialColumn<2 || sizeMatrizBMultiplicacionMatricialRow< 2 ||  sizeMatrizBMultiplicacionMatricialColumn<2 || sizeMatrizAMultiplicacionMatricialRow>10 || sizeMatrizAMultiplicacionMatricialColumn>10 || sizeMatrizBMultiplicacionMatricialRow>10 ||  sizeMatrizBMultiplicacionMatricialColumn>10) {
         alertMinMaxDimensiones();
         return;
     }
@@ -629,3 +656,191 @@ btGenerarMultiplicacionMatricial.addEventListener("click", ()=>{
     handleGenerarValores(sizeMatrizAMultiplicacionMatricialRow, sizeMatrizAMultiplicacionMatricialColumn, 'matriz-multiplicacion-matricial-A');
     handleGenerarValores(sizeMatrizBMultiplicacionMatricialRow, sizeMatrizBMultiplicacionMatricialColumn, 'matriz-multiplicacion-matricial-B');
 } );
+
+////////////////////////////////multiplicacion por escalar////////////////////////////////////////////////////////////////////////
+
+const handleCrearMultiplicacionEscalar=()=>{
+    let sizeMatrizAMultiplicacionEscalar = document.getElementById("sizeMatrizAMultiplicacionEscalar").value;
+    let valorKMultiplicacionEscalar = document.getElementById("valorKMultiplicacionEscalar").value;
+
+    if(!Boolean(sizeMatrizAMultiplicacionEscalar) ||  !Boolean(valorKMultiplicacionEscalar)){
+        alertDimensionesIncompletas();
+        return;
+    }
+
+    if (sizeMatrizAMultiplicacionEscalar < 2 || sizeMatrizAMultiplicacionEscalar>10 ) {
+        alertMinMaxDimensiones();
+        return;
+    }
+
+    //ambas dimensiones estan
+    let a=parseInt(sizeMatrizAMultiplicacionEscalar);
+    let b=parseFloat(valorKMultiplicacionEscalar);
+
+    // Ajusta la altura de la sección
+    let seccionMultiplicacionEscalar = document.getElementById("multiplicacionEscalar");
+    seccionMultiplicacionEscalar.style.height = "auto";
+
+    const contenidoMultiplicacionEscalar= document.getElementById("contenidoMultiplicacionEscalar");
+
+    if(contenidoMultiplicacionEscalar.hidden){
+        contenidoMultiplicacionEscalar.hidden=false;
+        seccionMultiplicacionEscalar.style.borderRadius= "20px";
+
+
+        let matrixMultiplicacionEscalarA =createMatriz(a, a, 'matriz-multiplicacion-escalar-A');
+        ///
+        let inputMultiplicacionEscalarK = document.createElement('input');
+        inputMultiplicacionEscalarK.type = "number";
+        inputMultiplicacionEscalarK.step = "any";
+        inputMultiplicacionEscalarK.id = "input-multiplicacion-escalar-k";
+        inputMultiplicacionEscalarK.value = b;
+        inputMultiplicacionEscalarK.style.width = "60px"; // opcional: ajuste visual
+
+        //actualizacion
+        inputMultiplicacionEscalarK.addEventListener("input", () => {
+            document.getElementById("valorKMultiplicacionEscalar").value = inputMultiplicacionEscalarK.value;
+        });
+
+        document.getElementById("valorKMultiplicacionEscalar").addEventListener("input", () => {
+            inputMultiplicacionEscalarK.value = document.getElementById("valorKMultiplicacionEscalar").value;
+        });
+
+        //containers
+        let seccionMultiplicacionEscalarMatrizA   =document.getElementById("seccionMultiplicacionEscalarMatrizA");
+        let seccionMultiplicacionEscalarK  =document.getElementById("seccionMultiplicacionEscalarK");
+        let seccionMultiplicacionEscalarResultado= document.getElementById("seccionMultiplicacionEscalarResultado");
+        
+
+        seccionMultiplicacionEscalarMatrizA.innerHTML="Matriz A"
+        seccionMultiplicacionEscalarK.innerHTML="Valor K"
+        seccionMultiplicacionEscalarResultado.innerHTML="Matriz A x k"
+        //
+        seccionMultiplicacionEscalarMatrizA.appendChild(matrixMultiplicacionEscalarA);
+        seccionMultiplicacionEscalarK.appendChild(inputMultiplicacionEscalarK);
+        return;
+    }
+    else{
+        clearMultiplicacionEscalar();
+        return;
+    }
+};
+
+
+const clearMultiplicacionEscalar = ()=>{
+    //secciones
+    const seccionMultiplicacionEscalarResultado= document.getElementById("seccionMultiplicacionEscalarResultado");
+    const seccionMultiplicacionEscalarMatrizA=document.getElementById("seccionMultiplicacionEscalarMatrizA");
+    const seccionMultiplicacionEscalarK=document.getElementById("seccionMultiplicacionEscalarK");
+    //matrices
+    const matrixMultiplicacionEscalarA=document.getElementById('matriz-multiplicacion-escalar-A');
+    const inputMultiplicacionEscalarK=document.getElementById("input-multiplicacion-escalar-k");
+    const matrixMultiplicacionEscalarResultado =document.getElementById('matriz-multiplicacion-escalar-resultado');
+
+    //remove
+    if (seccionMultiplicacionEscalarMatrizA.contains(matrixMultiplicacionEscalarA)) {seccionMultiplicacionEscalarMatrizA.removeChild(matrixMultiplicacionEscalarA)};
+    if (seccionMultiplicacionEscalarK.contains(inputMultiplicacionEscalarK)) {seccionMultiplicacionEscalarK.removeChild(inputMultiplicacionEscalarK)};
+    if (matrixMultiplicacionEscalarResultado && seccionMultiplicacionEscalarResultado.contains(matrixMultiplicacionEscalarResultado)) {seccionMultiplicacionEscalarResultado.removeChild(matrixMultiplicacionEscalarResultado)};
+    //ocultar
+    const contenidoMultiplicacionEscalar= document.getElementById("contenidoMultiplicacionEscalar");
+    contenidoMultiplicacionEscalar.hidden=true;
+
+    //reset fields
+    document.getElementById("sizeMatrizAMultiplicacionEscalar").value = "";
+    document.getElementById("valorKMultiplicacionEscalar").value = "";
+    document.getElementById("valorKMultiplicacionEscalar").readOnly=false;
+};
+
+const handleResultadoMultiplicacionEscalar=()=>{
+    const contenidoMultiplicacionEscalar= document.getElementById("contenidoMultiplicacionEscalar");
+    //get elementos
+    let matrixMultiplicacionEscalarA =document.getElementById('matriz-multiplicacion-escalar-A');
+    let inputMultiplicacionEscalarK= document.getElementById("input-multiplicacion-escalar-k")
+    
+    if(!matrizCompleta('matriz-multiplicacion-escalar-A') && inputMultiplicacionEscalarK && document.getElementById("valorKMultiplicacionEscalar").value != ""){
+        alertResultado();
+        return;
+    }
+    //si estan las matrices completas, resuelve
+
+    //size
+    let sizeMatrizResultado= parseInt(document.getElementById("sizeMatrizAMultiplicacionEscalar").value);
+    let k = parseFloat(document.getElementById("input-multiplicacion-escalar-k").value);
+
+    //remove any previous thing
+    const existingResult = document.getElementById("matriz-multiplicacion-escalar-resultado");
+    if (existingResult) {existingResult.remove();}
+
+    //ready to create
+    const matrixMultiplicacionEscalarResultado=createMatriz(sizeMatrizResultado, sizeMatrizResultado,'matriz-multiplicacion-escalar-resultado');
+    const seccionMultiplicacionEscalarResultado= document.getElementById("seccionMultiplicacionEscalarResultado");
+
+
+    //adjunta
+    seccionMultiplicacionEscalarResultado.appendChild(matrixMultiplicacionEscalarResultado);
+    //llena 1
+    for(let i = 1; i <=sizeMatrizResultado; i++){
+        for(let j = 1; j <=sizeMatrizResultado; j++){
+            let matrixCellR= document.getElementById(`matriz-multiplicacion-escalar-resultado_${i}_${j}`); 
+            let matrixCellA= document.getElementById(`matriz-multiplicacion-escalar-A_${i}_${j}`);
+            matrixCellR.value= Number((Number(matrixCellA.value)*k).toFixed(1));
+        }
+    }
+};
+
+const ResetMultiplicacionEscalar= ()=>{
+
+    const matrices = [
+        'matriz-multiplicacion-escalar-A',
+    ];
+
+    // Recorre cada matriz y limpia los valores
+    matrices.forEach(id => {
+        const matriz = document.getElementById(id);
+        if (matriz) {
+            const celdas = matriz.querySelectorAll("input");
+            celdas.forEach(celda => celda.value = ""); // vacía cada input
+        }
+    });
+
+    const seccionMultiplicacionEscalarResultado = document.getElementById("seccionMultiplicacionEscalarResultado");
+    const matrixMultiplicacionEscalarResultado=document.getElementById('matriz-multiplicacion-escalar-resultado');
+
+    const inputMultiplicacionEscalarK=document.getElementById("input-multiplicacion-escalar-k")
+
+    if (seccionMultiplicacionEscalarResultado && seccionMultiplicacionEscalarResultado.contains(matrixMultiplicacionEscalarResultado)) 
+    {
+        seccionMultiplicacionEscalarResultado.removeChild(matrixMultiplicacionEscalarResultado);
+        seccionRestaResultado2.removeChild(matrixRestaResultado2);
+    };
+    inputMultiplicacionEscalarK.value="";
+    
+};
+
+const btCrearMultiplicacionEscalar=document.getElementById("crearMultiplicacionEscalar");
+btCrearMultiplicacionEscalar.addEventListener("click", handleCrearMultiplicacionEscalar);
+
+const btResultadoMultiplicacionEscalar=document.getElementById("btResultadoMultiplicacionEscalar");
+btResultadoMultiplicacionEscalar.addEventListener("click", handleResultadoMultiplicacionEscalar);
+
+const  btLimpiarMultiplicacionEscalar= document.getElementById("btLimpiarMultiplicacionEscalar");
+btLimpiarMultiplicacionEscalar.addEventListener("click", ResetMultiplicacionEscalar);
+
+const  btGenerarMultiplicacionEscalar= document.getElementById("btGenerarValoresMultiplicacionEscalar");
+btGenerarMultiplicacionEscalar.addEventListener("click", ()=>{
+    const inputK = document.getElementById("input-multiplicacion-escalar-k");
+
+    if(!matrizEmpty('matriz-multiplicacion-escalar-A') || (inputK && inputK.value != "")){
+        alertaVaciar();
+        return;
+    }
+
+    let sizeMatrizAMultiplicacionEscalar = document.getElementById("sizeMatrizAMultiplicacionEscalar").value;
+    handleGenerarValores(sizeMatrizAMultiplicacionEscalar, sizeMatrizAMultiplicacionEscalar, 'matriz-multiplicacion-escalar-A');
+
+    if(inputK){
+        inputK.value = randomNumberForCell();
+        document.getElementById("valorKMultiplicacionEscalar").value = inputK.value;
+    }
+});
+

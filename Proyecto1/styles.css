@@ -188,6 +188,13 @@ main{
     margin: 10px 0;
 }
 
+.matrices-container > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .symbol{
     margin: 0;
     font-size: 1.5rem; /* tamaño del signo + y = */

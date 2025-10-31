@@ -104,6 +104,7 @@
                         <h6 class="symbol">x</h6>
                         <input type="number" placeholder="n"  min="2" max="10" id="sizeMatrizAMultiplicacionMatricialColumn">
                     </div>
+                </div>
 
                     <div class="matrices-dimensiones">
                         <p>Matriz B</p>
@@ -137,8 +138,68 @@
 
         </section>
 
-        <section id="multiplicacionEscalar"></section>
-        <section id="Transpuesta"></section>
+        <section class="seccion" id="multiplicacionEscalar">
+            <div class="headerSeccion">
+                <div class= "SeccionTitle" id="multiplicacionEscalarTitle"> <h2>Multiplicacion por Escalar</h2></div>
+
+                <div class="headerPanel">
+                    <div class="matrices-dimensiones">
+                        <p>Matriz A</p>
+                        <input type="number" step = "any" placeholder="n"  id="sizeMatrizAMultiplicacionEscalar">
+                    </div>
+                    <div class="matrices-dimensiones">
+                        <p>Escalar k</p>
+                        <input type="number" placeholder="k"  min="2" max="10" id="valorKMultiplicacionEscalar">
+                    </div>
+                </div>
+
+                    <input type="button" value="Crear" id="crearMultiplicacionEscalar" class="botonCrear">
+            </div>    
+            
+
+            <div id="contenidoMultiplicacionEscalar" hidden>
+                <p style="margin: 10px;">Ingrese los valores</p>
+
+                <div class="matrices-container">
+                    <div class="seccionMatriz" id="seccionMultiplicacionEscalarMatrizA">Matriz A</div>
+                    <h3 class="symbol">x</h3>
+                    <div class="seccionMatriz" id="seccionMultiplicacionEscalarK">Valor K</div>
+                    <h3 class="symbol">=</h3>
+                    <div class ="seccionMatriz" id="seccionMultiplicacionEscalarResultado">Matriz A x k</div>
+                </div>
+
+                <div class="seccionButtons">
+                    <input id= "btResultadoMultiplicacionEscalar" type="button" value="Resultado"        style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                    <input id= "btLimpiarMultiplicacionEscalar" type="button" value="Limpiar" style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                    <input id= "btGenerarValoresMultiplicacionEscalar" type="button" value=" Generar valores"          style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                </div>
+            </div>
+
+        </section>
+        <section id="Transpuesta">
+            <div class="headerSeccion">
+                <div class= "SeccionTitle" id="SumaTitle"> <h2>Suma</h2></div>
+                <p>Matriz A</p>
+                <input type="number" placeholder="n"  min="2" max="10" id="sizeMatrizATranspuesta">
+                <input type="button" value="Crear" id="crearSuma" class="botonCrear">
+            </div>
+
+            <div id="contenidoTranspuesta" hidden>
+                <p style="margin: 10px;">Ingrese los valores</p>
+
+                <div class="matrices-container">
+                    <div class="seccionMatriz" id="seccionSumaMatrizA">Matriz A</div>
+                    <h3 class="symbol"><span>&rarr;</span></h3>
+                    <div class ="seccionMatriz" id="seccionSumaResultado">A+B</div>
+                </div>
+
+                <div class="seccionButtons">
+                    <input id= "btResultadoSuma" type="button" value="Resultado"        style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                    <input id= "btLimpiarSuma" type="button" value="Limpiar" style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                    <input id= "btGenerarValoresSuma" type="button" value=" Generar valores"          style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                </div>
+            </div>
+        </section>
         <section id="matrizID"></section>
         <section id="matrizInv"></section>
         <section id="Determinante"></section>
