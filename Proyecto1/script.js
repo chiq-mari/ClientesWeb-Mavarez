@@ -201,7 +201,7 @@ const clearSum = ()=>{
 };
 
 function randomNumberForCell(){ //IN RANGE[-10, 10]
-    return Number((Math.random()*(20)-10).toFixed(1));
+    return Math.floor(Math.random()*(21)-10);
 }
 
 const handleGenerarValores=(r, c, matrixID)=>{
@@ -296,8 +296,8 @@ const handleCrearResta=()=>{
         //clear any existing matrices( prevent duplicates)
         seccionRestaMatrizA.innerHTML="Matriz A"
         seccionRestaMatrizB.innerHTML="Matriz B"
-        seccionRestaResultado1="A-B"
-        seccionRestaResultado2="B-A"
+        seccionRestaResultado1.innerHTML="Matriz A-B"
+        seccionRestaResultado2.innerHTML="Matriz B-A"
         //
         seccionRestaMatrizA.appendChild(matrixRestaA);
         seccionRestaMatrizB.appendChild(matrixRestaB);
@@ -387,6 +387,35 @@ const handleResultadoResta=()=>{
 
 };
 
+const ResetResta= ()=>{
+
+    const matrices = [
+        'matriz-resta-A',
+        'matriz-resta-B',
+    ];
+
+    // Recorre cada matriz y limpia los valores
+    matrices.forEach(id => {
+        const matriz = document.getElementById(id);
+        if (matriz) {
+            const celdas = matriz.querySelectorAll("input");
+            celdas.forEach(celda => celda.value = ""); // vacía cada input
+        }
+    });
+
+    const seccionRestaResultado1 = document.getElementById("seccionRestaResultado1");
+    const seccionRestaResultado2 = document.getElementById("seccionRestaResultado2");
+    const matrixRestaResultado1=document.getElementById('matriz-resta-resultado-1');
+    const matrixRestaResultado2=document.getElementById('matriz-resta-resultado-2');
+
+    if (matrixRestaResultado1  && seccionRestaResultado1.contains(matrixRestaResultado1)) 
+    {
+        seccionRestaResultado1.removeChild(matrixRestaResultado1);
+        seccionRestaResultado2.removeChild(matrixRestaResultado2);
+    };
+    
+};
+
 
 const btCrearResta=document.getElementById("crearResta");
 btCrearResta.addEventListener("click", handleCrearResta);
@@ -395,7 +424,7 @@ const btResultadoResta=document.getElementById("btResultadoResta");
 btResultadoResta.addEventListener("click", handleResultadoResta);
 
 const  btLimpiarResta= document.getElementById("btLimpiarResta");
-btLimpiarResta.addEventListener("click", clearResta);
+btLimpiarResta.addEventListener("click", ResetResta);
 
 const  btGenerarResta= document.getElementById("btGenerarValoresResta");
 btGenerarResta.addEventListener("click", ()=>{
@@ -411,3 +440,192 @@ btGenerarResta.addEventListener("click", ()=>{
     handleGenerarValores(sizeMatrizBResta, sizeMatrizBResta, 'matriz-resta-B');
 } )
 
+/////////////////////////Multiplicacion Matricial////////////////////////////////////
+
+const handleCrearMultiplicacionMatricial=()=>{
+    let sizeMatrizAMultiplicacionMatricialRow = document.getElementById("sizeMatrizAMultiplicacionMatricialRow").value;
+    let sizeMatrizAMultiplicacionMatricialColumn = document.getElementById("sizeMatrizAMultiplicacionMatricialColumn").value;
+
+    let sizeMatrizBMultiplicacionMatricialRow = document.getElementById("sizeMatrizBMultiplicacionMatricialRow").value;
+    let sizeMatrizBMultiplicacionMatricialColumn = document.getElementById("sizeMatrizBMultiplicacionMatricialColumn").value;
+
+    if(!Boolean(sizeMatrizAMultiplicacionMatricialRow) || !Boolean(sizeMatrizAMultiplicacionMatricialColumn) ||  !Boolean(sizeMatrizBMultiplicacionMatricialRow) || !Boolean(sizeMatrizAMultiplicacionMatricialColumn) ||  !Boolean(sizeMatrizBMultiplicacionMatricialColumn)){
+        alertDimensionesIncompletas();
+        return;
+    }
+
+    if (sizeMatrizAMultiplicacionMatricialRow< 2 || sizeMatrizAMultiplicacionMatricialColumn<2 || sizeMatrizBMultiplicacionMatricialRow< 2 ||  sizeMatrizBMultiplicacionMatricialColumn<2) {
+        alertMinMaxDimensiones();
+        return;
+    }
+
+    //ambas dimensiones estan
+    let rowA=parseInt(sizeMatrizAMultiplicacionMatricialRow );
+    let colA=parseInt(sizeMatrizAMultiplicacionMatricialColumn);
+    let rowB=parseInt(sizeMatrizBMultiplicacionMatricialRow);
+    let colB=parseInt(sizeMatrizBMultiplicacionMatricialColumn);
+
+    if(colA!=rowB){
+       window.alert("El numero de columnas de A debe ser igual al nro de filas de B")
+        return;
+    }
+
+    //se puede operar
+
+    // Ajusta la altura de la sección
+    let seccionMultiplicacionMatricial = document.getElementById("multiplicacionMatricial");
+    seccionMultiplicacionMatricial.style.height = "auto";
+
+    const contenidoMultiplicacionMatricial= document.getElementById("contenidoMultiplicacionMatricial");
+
+    if(contenidoMultiplicacionMatricial.hidden){
+        contenidoMultiplicacionMatricial.hidden=false;
+        seccionMultiplicacionMatricial.style.borderRadius= "20px";
+
+
+        let matrixMultiplicacionMatricialA =createMatriz(rowA, colA, 'matriz-multiplicacion-matricial-A');
+        let matrixMultiplicacionMatricialB =createMatriz(rowB, colB, 'matriz-multiplicacion-matricial-B');
+        //containers
+        let seccionMultiplicacionMatricialMatrizA=document.getElementById("seccionMultiplicacionMatricialMatrizA");
+        let seccionMultiplicacionMatricialMatrizB=document.getElementById("seccionMultiplicacionMatricialMatrizB");
+        let seccionMultiplicacionMatricialResultado = document.getElementById("seccionMultiplicacionMatricialResultado");
+        //plus
+        //let plusSymbol=document.createElement('p');
+        //plusSymbol.textContent="+";
+        //equal
+        //let equalSymbol=document.createElement('p');
+        //equalSymbol.textContent="=";
+        //clear any existing matrices( prevent duplicates)
+        seccionMultiplicacionMatricialMatrizA.innerHTML="Matriz A"
+        seccionMultiplicacionMatricialMatrizB.innerHTML="Matriz B"
+        seccionMultiplicacionMatricialResultado="A x B"
+        //
+        seccionMultiplicacionMatricialMatrizA.appendChild(matrixMultiplicacionMatricialA);
+        seccionMultiplicacionMatricialMatrizB.appendChild(matrixMultiplicacionMatricialB);
+        return;
+    }
+    else{
+        clearMultiplicacionMatricial();
+        return;
+    }
+
+};
+
+const handleResultadoMultiplicacionMatricial=()=>{
+    const contenidoMultiplicacionMatricial= document.getElementById("contenidoMultiplicacionMatricial");
+    
+    if(!matrizCompleta('matriz-multiplicacion-matricial-A') || !matrizCompleta('matriz-multiplicacion-matricial-B')){
+        alertResultado();
+        return;
+    }
+    //si estan las matrices completas, crea la otra matriz y resuelve
+
+    let matrixMultiplicacionMatricialA=document.getElementById('matriz-multiplicacion-matricial-A');
+    let matrixMultiplicacionMatricialB=document.getElementById('matriz-multiplicacion-matricial-B');
+
+    //sizes
+    let sizeMatrizAMultiplicacionMatricialRow = document.getElementById("sizeMatrizAMultiplicacionMatricialRow").value;
+    let sizeMatrizAMultiplicacionMatricialColumn = document.getElementById("sizeMatrizAMultiplicacionMatricialColumn").value;
+
+    let sizeMatrizBMultiplicacionMatricialRow = document.getElementById("sizeMatrizBMultiplicacionMatricialRow").value;
+    let sizeMatrizBMultiplicacionMatricialColumn = document.getElementById("sizeMatrizBMultiplicacionMatricialColumn").value;
+
+    const seccionMultiplicacionMatricialResultado = document.getElementById("seccionMultiplicacionMatricialResultado");
+    //remove any previous thing
+    const existingResult = document.getElementById("matriz-multiplicacion-matricial-resultado");
+    if (existingResult) {existingResult.remove();}
+
+    //ready to create
+    const matrixMultiplicacionMatricialResultado= createMatriz(sizeMatrizAMultiplicacionMatricialRow, sizeMatrizBMultiplicacionMatricialColumn, "matriz-multiplicacion-matricial-resultado");
+    //adjunta
+    seccionMultiplicacionMatricialResultado.appendChild(matrixMultiplicacionMatricialResultado);
+    seccionMultiplicacionMatricialResultado.hidden=false;
+    //llena
+    for (let i = 1; i <= sizeMatrizAMultiplicacionMatricialRow; i++) {
+        for (let j = 1; j <= sizeMatrizBMultiplicacionMatricialColumn; j++) {
+            let suma = 0;
+            for (let k = 1; k <= sizeMatrizAMultiplicacionMatricialColumn; k++) {
+                const aVal = Number(document.getElementById(`matriz-multiplicacion-matricial-A_${i}_${k}`).value);
+                const bVal = Number(document.getElementById(`matriz-multiplicacion-matricial-B_${k}_${j}`).value);
+                suma += aVal * bVal;
+            }
+            const matrixCellR = document.getElementById(`matriz-multiplicacion-matricial-resultado_${i}_${j}`);
+            matrixCellR.value = Number(suma.toFixed(1)); // redondea a 1 decimal
+        }
+    }
+};
+
+const clearMultiplicacionMatricial = ()=>{
+    //secciones
+    const seccionMultiplicacionMatricialResultado = document.getElementById("seccionMultiplicacionMatricialResultado");
+    const seccionMultiplicacionMatricialMatrizA=document.getElementById("seccionMultiplicacionMatricialMatrizA");
+    const seccionMultiplicacionMatricialMatrizB=document.getElementById("seccionMultiplicacionMatricialMatrizB");
+    //matrices
+    const matrixMultiplicacionMatricialA=document.getElementById('matriz-multiplicacion-matricial-A');
+    const matrixMultiplicacionMatricialB=document.getElementById('matriz-multiplicacion-matricial-B');
+    const matrixMultiplicacionMatricialResultado=document.getElementById('matriz-multiplicacion-matricial-resultado');
+
+    //remove
+    if (seccionMultiplicacionMatricialMatrizA.contains(matrixMultiplicacionMatricialA)) {seccionMultiplicacionMatricialMatrizA.removeChild(matrixMultiplicacionMatricialA)};
+    if (seccionMultiplicacionMatricialMatrizB.contains(matrixMultiplicacionMatricialB)) {seccionMultiplicacionMatricialMatrizB.removeChild(matrixMultiplicacionMatricialB)};
+    if (seccionMultiplicacionMatricialResultado.contains(matrixMultiplicacionMatricialResultado)) {seccionMultiplicacionMatricialResultado.removeChild(matrixMultiplicacionMatricialResultado)};
+    //ocultar
+    const contenidoMultiplicacionMatricial= document.getElementById("contenidoMultiplicacionMatricial");
+    seccionMultiplicacionMatricialResultado.hidden=true;
+    contenidoMultiplicacionMatricial.hidden=true;
+
+    //reset fields
+    document.getElementById("sizeMatrizAMultiplicacionMatricialRow").value = "";
+    document.getElementById("sizeMatrizAMultiplicacionMatricialColumn").value = "";
+    document.getElementById("sizeMatrizBMultiplicacionMatricialRow").value = "";
+    document.getElementById("sizeMatrizBMultiplicacionMatricialColumn").value = "";
+};
+
+const ResetMultiplicacionMatricial= ()=>{
+
+    const matrices = [
+        'matriz-multiplicacion-matricial-A',
+        'matriz-multiplicacion-matricial-B',
+    ];
+
+    // Recorre cada matriz y limpia los valores
+    matrices.forEach(id => {
+        const matriz = document.getElementById(id);
+        if (matriz) {
+            const celdas = matriz.querySelectorAll("input");
+            celdas.forEach(celda => celda.value = ""); // vacía cada input
+        }
+    });
+
+    const seccionMultiplicacionMatricialResultado = document.getElementById("seccionMultiplicacionMatricialResultado");
+    const matrixMultiplicacionMatricialResultado=document.getElementById('matriz-multiplicacion-matricial-resultado');
+    if (matrixMultiplicacionMatricialResultado && seccionMultiplicacionMatricialResultado.contains(matrixMultiplicacionMatricialResultado)) {seccionMultiplicacionMatricialResultado.removeChild(matrixMultiplicacionMatricialResultado)};
+    
+}
+
+
+const btCrearMultiplicacionMatricial=document.getElementById("crearMultiplicacionMatricial");
+btCrearMultiplicacionMatricial.addEventListener("click", handleCrearMultiplicacionMatricial);
+
+const btResultadoMultiplicacionMatricial=document.getElementById("btResultadoMultiplicacionMatricial");
+btResultadoMultiplicacionMatricial.addEventListener("click", handleResultadoMultiplicacionMatricial);
+
+const  btLimpiarMultiplicacionMatricial= document.getElementById("btLimpiarMultiplicacionMatricial");
+btLimpiarMultiplicacionMatricial.addEventListener("click", ResetMultiplicacionMatricial);
+
+const  btGenerarMultiplicacionMatricial= document.getElementById("btGenerarValoresMultiplicacionMatricial");
+btGenerarMultiplicacionMatricial.addEventListener("click", ()=>{
+
+    if(!matrizEmpty('matriz-multiplicacion-matricial-A') || !matrizEmpty('matriz-multiplicacion-matricial-B')  ){
+        alertaVaciar();
+        return;
+    }
+    let sizeMatrizAMultiplicacionMatricialRow = document.getElementById("sizeMatrizAMultiplicacionMatricialRow").value;
+    let sizeMatrizAMultiplicacionMatricialColumn = document.getElementById("sizeMatrizAMultiplicacionMatricialColumn").value;
+
+    let sizeMatrizBMultiplicacionMatricialRow = document.getElementById("sizeMatrizBMultiplicacionMatricialRow").value;
+    let sizeMatrizBMultiplicacionMatricialColumn = document.getElementById("sizeMatrizBMultiplicacionMatricialColumn").value;
+
+    handleGenerarValores(sizeMatrizAMultiplicacionMatricialRow, sizeMatrizAMultiplicacionMatricialColumn, 'matriz-multiplicacion-matricial-A');
+    handleGenerarValores(sizeMatrizBMultiplicacionMatricialRow, sizeMatrizBMultiplicacionMatricialColumn, 'matriz-multiplicacion-matricial-B');
+} );

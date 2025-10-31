@@ -79,8 +79,8 @@
                 <div id="ResultadoRestas">
                     <p style="margin: 10px;">Resultado</p>
                     <div class="matrices-container">
-                        <div class ="seccionMatriz" id="seccionRestaResultado1" style="justify-content: space-between;">A-B</div>
-                        <div class ="seccionMatriz" id="seccionRestaResultado2" style="justify-content: space-between;">B-A</div>
+                        <div class ="seccionMatriz" id="seccionRestaResultado1" style="justify-content: space-between;">Matriz A-B</div>
+                        <div class ="seccionMatriz" id="seccionRestaResultado2" style="justify-content: space-between;">Matriz B-A</div>
                     </div>
                 </div>
 
@@ -93,7 +93,50 @@
             </div>
         </section>
 
-        <section id="multiplicacionMatricial"></section>
+        <section class = "seccion" id="multiplicacionMatricial">
+            <div class="headerSeccion">
+                <div class= "SeccionTitle" id="multiplicacionMatricialTitle"> <h2>Multiplicacion de Matrices</h2></div>
+
+                <div class="headerPanel">
+                    <div class="matrices-dimensiones">
+                        <p>Matriz A</p>
+                        <input type="number" placeholder="m"  min="2" max="10" id="sizeMatrizAMultiplicacionMatricialRow">
+                        <h6 class="symbol">x</h6>
+                        <input type="number" placeholder="n"  min="2" max="10" id="sizeMatrizAMultiplicacionMatricialColumn">
+                    </div>
+
+                    <div class="matrices-dimensiones">
+                        <p>Matriz B</p>
+                        <input type="number" placeholder="m" min="2" max="10" id="sizeMatrizBMultiplicacionMatricialRow">
+                        <h6 class="symbol">x</h6>
+                        <input type="number" placeholder="n" min="2" max="10" id="sizeMatrizBMultiplicacionMatricialColumn">
+                    </div>
+
+
+                    <input type="button" value="Crear" id="crearMultiplicacionMatricial" class="botonCrear">
+                </div>    
+            </div>
+
+            <div id="contenidoMultiplicacionMatricial" hidden>
+                <p style="margin: 10px;">Ingrese los valores</p>
+
+                <div class="matrices-container">
+                    <div class="seccionMatriz" id="seccionMultiplicacionMatricialMatrizA">Matriz A</div>
+                    <h3 class="symbol">x</h3>
+                    <div class="seccionMatriz" id="seccionMultiplicacionMatricialMatrizB">Matriz B</div>
+                    <h3 class="symbol">=</h3>
+                    <div class ="seccionMatriz" id="seccionMultiplicacionMatricialResultado">Matriz A x B</div>
+                </div>
+
+                <div class="seccionButtons">
+                    <input id= "btResultadoMultiplicacionMatricial" type="button" value="Resultado"        style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                    <input id= "btLimpiarMultiplicacionMatricial" type="button" value="Limpiar" style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                    <input id= "btGenerarValoresMultiplicacionMatricial" type="button" value=" Generar valores"          style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                </div>
+            </div>
+
+        </section>
+
         <section id="multiplicacionEscalar"></section>
         <section id="Transpuesta"></section>
         <section id="matrizID"></section>

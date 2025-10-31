@@ -136,6 +136,14 @@ main{
     border-bottom: 1px solid #d1cece;
 }
 
+.headerPanel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    gap:20px
+}
+
 .SeccionTitle{
     width: 40%;
     height:60px;
@@ -146,6 +154,14 @@ main{
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;   
     
+}
+
+.matrices-dimensiones{
+    display: flex;
+    flex-direction: row;
+    gap:2px;
+    align-items: center;
+
 }
 
 .botonCrear{
