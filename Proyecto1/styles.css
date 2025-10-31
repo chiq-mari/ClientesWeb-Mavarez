@@ -37,7 +37,7 @@ body{
     border-bottom: transparent;
 }
 
-#header-all p {
+.header-all p {
     margin-top: 12px;
     max-width: 600px;
     text-align: center;
@@ -111,7 +111,9 @@ main{
     align-items: center;
 }
 
-#suma{
+
+
+.seccion{
     font-family: Tahoma;
     display: flex;
     flex-direction: column;
@@ -125,7 +127,7 @@ main{
     border: 2px solid #d1cece;
 }
 
-.headerSuma{
+.headerSeccion{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -134,7 +136,7 @@ main{
     border-bottom: 1px solid #d1cece;
 }
 
-#SumaTitle{
+.SeccionTitle{
     width: 40%;
     height:60px;
     background-color: #ded9fb;
@@ -146,7 +148,7 @@ main{
     
 }
 
-#crearSuma{
+.botonCrear{
     background-color: #2e27aa;
     color: #fff;
     border-radius: 20px;
@@ -157,14 +159,15 @@ main{
     transition: all 0.3s ease;
 }
 
-#crearSuma:hover {
+.botonCrear:hover {
     transform: scale(1.05);
 }
 
-#matrices-container{
+.matrices-container{
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     margin: 10px 0;
 }
@@ -193,8 +196,8 @@ main{
 }
 
 .matriz-cells{
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
     border-radius: 5px;
     background-color: #a1a1a1;
     border: 1px solid black;
@@ -203,6 +206,7 @@ main{
     font-size: 15px;           
     text-align: center;        
     vertical-align: middle;
+    outline: none;
 }
 
 .matriz-cells input{
@@ -210,12 +214,21 @@ main{
     padding: 0;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
 .seccionButtons{
     margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+}
 
-
+#ResultadoRestas{
+    border-top: 1px solid #a1a1a1;
 }

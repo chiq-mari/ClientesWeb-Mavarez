@@ -27,40 +27,72 @@
     </div>
 
     <main>
-        <section id="suma">
-            <div class="headerSuma">
-                <div id="SumaTitle"> <h2>Suma</h2></div>
-
-                <div class="matrizSInputs"></div>
+        <section  class= "seccion" id="suma">
+            <div class="headerSeccion">
+                <div class= "SeccionTitle" id="SumaTitle"> <h2>Suma</h2></div>
                 <p>Matriz A</p>
-                <input type="number" placeholder="n"  min="2" max="10" id="sizeMatrizA">
+                <input type="number" placeholder="n"  min="2" max="10" id="sizeMatrizASuma">
                 <p>Matriz B</p>
-                <input type="number" placeholder="n" min="2" max="10" id="sizeMatrizB">
-                <input type="button" value="Crear" id="crearSuma">
+                <input type="number" placeholder="n" min="2" max="10" id="sizeMatrizBSuma">
+                <input type="button" value="Crear" id="crearSuma" class="botonCrear">
             </div>
 
             <div id="contenidoSuma" hidden>
-                <p style="margin: 5px;">Ingrese los valores</p>
+                <p style="margin: 10px;">Ingrese los valores</p>
 
-                <div id="matrices-container">
+                <div class="matrices-container">
                     <div class="seccionMatriz" id="seccionSumaMatrizA">Matriz A</div>
                     <h3 class="symbol">+</h3>
                     <div class="seccionMatriz" id="seccionSumaMatrizB">Matriz B</div>
                     <h3 class="symbol">=</h3>
-                    <div hidden class ="seccionMatriz" id="seccionSumaResultado">A+B</div>
-
+                    <div class ="seccionMatriz" id="seccionSumaResultado">A+B</div>
                 </div>
 
                 <div class="seccionButtons">
                     <input id= "btResultadoSuma" type="button" value="Resultado"        style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
                     <input id= "btLimpiarSuma" type="button" value="Limpiar" style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
-                    <input id= "btGenerarValores" type="button" value=" Generar valores"          style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                    <input id= "btGenerarValoresSuma" type="button" value=" Generar valores"          style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
                 </div>
             </div>
         </section>
 
 
-        <section id="resta"></section>
+        <section class= "seccion" id="resta">
+            <div class="headerSeccion">
+                <div class= "SeccionTitle" id="RestaTitle"> <h2>Resta</h2></div>
+                <p>Matriz A</p>
+                <input type="number" placeholder="n"  min="2" max="10" id="sizeMatrizAResta">
+                <p>Matriz B</p>
+                <input type="number" placeholder="n" min="2" max="10" id="sizeMatrizBResta">
+                <input type="button" value="Crear" id="crearResta" class="botonCrear">
+            </div>
+
+            <div id="contenidoResta" hidden>
+                <p style="margin: 10px;">Ingrese los valores</p>
+
+                <div class="matrices-container">
+                    <div class="seccionMatriz" id="seccionRestaMatrizA">Matriz A</div>
+                    <h3 class="symbol">,</h3>
+                    <div class="seccionMatriz" id="seccionRestaMatrizB">Matriz B</div>
+                </div>
+
+                <div id="ResultadoRestas">
+                    <p style="margin: 10px;">Resultado</p>
+                    <div class="matrices-container">
+                        <div class ="seccionMatriz" id="seccionRestaResultado1" style="justify-content: space-between;">A-B</div>
+                        <div class ="seccionMatriz" id="seccionRestaResultado2" style="justify-content: space-between;">B-A</div>
+                    </div>
+                </div>
+
+
+                <div class="seccionButtons">
+                    <input id= "btResultadoResta" type="button" value="Resultado"        style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                    <input id= "btLimpiarResta" type="button" value="Limpiar" style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                    <input id= "btGenerarValoresResta" type="button" value=" Generar valores"          style=" background-color: #2e27aa; color: #fff ; border-radius: 20px ; border-style: none; padding: 5px 10px; font-size: 1rem ;cursor: pointer;transition: all 0.3s ease">
+                </div>
+            </div>
+        </section>
+
         <section id="multiplicacionMatricial"></section>
         <section id="multiplicacionEscalar"></section>
         <section id="Transpuesta"></section>
