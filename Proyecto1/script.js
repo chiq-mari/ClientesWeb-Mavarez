@@ -1,5 +1,5 @@
 function alertDimensionesIncompletas(){
-    window.alert("Por favor ingrese las dimensiones de ambas matrices antes de operar con ellas");
+    window.alert("Por favor ingrese las dimensiones de las matrices antes de operar con ellas");
 }
 
 function alertDimensionesDistintas(){
@@ -995,7 +995,6 @@ btGenerarTranspuesta.addEventListener("click", ()=>{
 
 /////////////////////////////////////////////////matriz Inversa///////////////////////////////////////////
 
-
 const handleCrearMatrizID=()=>{
     let sizeMatrizID = document.getElementById("sizeMatrizID").value;
 
@@ -1079,3 +1078,90 @@ btLimpiarMatrizID.addEventListener("click", clearMatrizID);
 
 //////////////////////////////////////Determinante/////////////////////////////
 
+const handleCrearDeterminante=()=>{
+    let sizeDeterminante = document.getElementById("sizeDeterminante").value;
+
+    if(!Boolean(sizeDeterminante)){
+        alertDimensionesIncompletas();
+        return;
+    }
+
+    if (sizeDeterminante < 2 ||  sizeDeterminante > 10) {
+        alertMinMaxDimensiones();
+        return;
+    }
+
+    //las dimensiones estan
+    let a=parseInt(sizeDeterminante);
+
+
+    // Ajusta la altura de la sección
+    let seccionDeterminante = document.getElementById("Determinante");
+    seccionDeterminante.style.height = "auto";
+
+    const contenidoDeterminante= document.getElementById("contenidoDeterminante");
+
+    if(contenidoDeterminante.hidden){
+        contenidoDeterminante.hidden=false;
+        contenidoDeterminante.style.borderRadius= "20px";
+
+
+        let matrizA =createMatriz(a, a, 'matriz-A');
+        //containers
+        let seccionDeterminante= document.getElementById("seccionDeterminante");
+        let seccionDeterminanteResultado = document.getElementById("seccionDeterminanteResultado");
+    
+        //clear any existing matrices( prevent duplicates)
+        seccionDeterminanteResultado.innerHTML="";
+        seccionDeterminante.innerHTML="<p>A<sub>n x n</sub>";
+        //
+        seccionDeterminante.appendChild(matrizA);
+        return;
+    }
+    else{
+        clearDeterminante();
+        return;
+    }
+};
+
+
+const clearDeterminante = ()=>{
+    //secciones
+    let contenidoDeterminante= document.getElementById("contenidoDeterminante");
+    let seccionDeterminante = document.getElementById("seccionDeterminante");
+    //matrices
+    const matrizA=document.getElementById('matriz-A');
+
+    //remove
+    if (seccionDeterminante.contains(matrizA)) {seccionDeterminante.removeChild(matrizA)};
+    //ocultar
+    contenidoDeterminante.hidden=true;
+
+    //reset fields
+    document.getElementById("sizeDeterminante").value="";
+};
+
+function handleResultadoDeterminante(idMatriz, side)
+{
+}
+
+
+const btCrearDeterminante=document.getElementById("crearDeterminante");
+btCrearDeterminante.addEventListener("click", handleCrearDeterminante);
+
+const  btLimpiarDeterminante= document.getElementById("btLimpiarDeterminante");
+btLimpiarDeterminante.addEventListener("click", clearDeterminante);
+
+const btResultadoDeterminante=document.getElementById("btResultadoDeterminante");
+btResultadoDeterminante.addEventListener("click", handleResultadoDeterminante);
+
+const  btGenerarValoresDeterminante= document.getElementById("btGenerarValoresDeterminante");
+btGenerarValoresDeterminante.addEventListener("click", ()=>{
+
+    if(!matrizEmpty('matriz-A') ){
+        alertaVaciar();
+        return;
+    }
+    let sizeDeterminante = document.getElementById("sizeDeterminante").value;
+    handleGenerarValores(sizeDeterminante , sizeDeterminante , 'matriz-A');
+} );
