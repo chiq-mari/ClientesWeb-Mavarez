@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="fonts.css">
+</head>
+<body>
+
+    <section id="mainSection">
+        <div>
+            <div style="background-color: #F9CC39;      /* amarillo del ejemplo */
+    padding: 20px 40px;             /* espacio interno */
+    border-radius: 20px;            /* esquinas redondeadas */
+    display: inline-block;          /* el fondo solo rodea el texto */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);  /* sombra suave */
+    margin: 20px auto;"><h1 style=" margin: 0;
+    font-family:'Irish Grover', cursive;
+    font-size: 36px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* sombra del texto */
+    -webkit-text-stroke: 2px black;
+    ">!Bienvenidos a esta Trivia!</h1></div>
+            <p>Ingrese sus datos para iniciar</p>
+        </div>
+        <form>
+            <div><p>Nombre del jugador</p><input type="text"></div>
+            <div><p>Nro de preguntas</p><input type="number"></div>
+            
+            <div>
+                <p>Dificultad</p>
+                <label>
+                    <input type="radio" name="difficulty" value="easy">
+                    Fácil
+                </label>
+            
+                <label>
+                    <input type="radio" name="difficulty" value="medium">
+                    Medio
+                </label>
+            
+                <label>
+                    <input type="radio" name="difficulty" value="hard">
+                    Difícil
+                </label>
+            </div>
+                
+            <div>
+                <p>Categorias</p>
+                <label>
+                    <input type="radio" name="difficulty" value="Mixtas">
+                    Mixtas
+                </label>
+            
+                <label>
+                    <input type="radio" name="difficulty" value="Seleccionar variadas">
+                    Seleccionar variadas
+                </label>
+            </div>
+
+        </form>
+    </section>
+    
+</body>
+    <script src="script.js"></script>
+</html>
