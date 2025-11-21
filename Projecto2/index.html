@@ -11,56 +11,51 @@
 
     <section id="mainSection">
         <div>
-            <div style="background-color: #F9CC39;      /* amarillo del ejemplo */
-    padding: 20px 40px;             /* espacio interno */
-    border-radius: 20px;            /* esquinas redondeadas */
-    display: inline-block;          /* el fondo solo rodea el texto */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);  /* sombra suave */
-    margin: 20px auto;"><h1 style=" margin: 0;
-    font-family:'Irish Grover', cursive;
-    font-size: 36px;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* sombra del texto */
-    -webkit-text-stroke: 2px black;
-    ">!Bienvenidos a esta Trivia!</h1></div>
-            <p>Ingrese sus datos para iniciar</p>
+            <div id= "gameName">
+            </div>
         </div>
-        <form>
-            <div><p>Nombre del jugador</p><input type="text"></div>
-            <div><p>Nro de preguntas</p><input type="number"></div>
-            
-            <div>
-                <p>Dificultad</p>
-                <label>
-                    <input type="radio" name="difficulty" value="easy">
-                    Fácil
-                </label>
-            
-                <label>
-                    <input type="radio" name="difficulty" value="medium">
-                    Medio
-                </label>
-            
-                <label>
-                    <input type="radio" name="difficulty" value="hard">
-                    Difícil
-                </label>
-            </div>
-                
-            <div>
-                <p>Categorias</p>
-                <label>
-                    <input type="radio" name="difficulty" value="Mixtas">
-                    Mixtas
-                </label>
-            
-                <label>
-                    <input type="radio" name="difficulty" value="Seleccionar variadas">
-                    Seleccionar variadas
-                </label>
-            </div>
 
-        </form>
+        <div id="inputSection">
+            <form id="inputItems">
+                <h2><strong>Ingrese sus datos para iniciar</strong></h2>
+
+                <div id="nombrePlayer" class=" inputItem"><p><strong>Nombre del jugador</strong></p><input type="text" placeholder="your name here"></div>
+
+                <div id="nroDePrguntas" class=" inputItem"><p><strong>Nro de preguntas</strong></p><input type="number" placeholder="from 5 to 20" min="5" max="20" style="appearance: none;"></div>
+
+                <div id="dificultad" class=" inputItem">
+                    <p><strong>Dificultad</strong></p>
+                    <label>
+                        <input type="radio" name="dificultad" value="easy">
+                        Fácil
+                    </label>
+                
+                    <label>
+                        <input type="radio" name="dificultad" value="medium">
+                        Medio
+                    </label>
+                
+                    <label>
+                        <input type="radio" name="dificultad" value="hard">
+                        Difícil
+                    </label>
+                </div>
+
+                <div id="categorias" class=" inputItem">
+                    <p><strong>Categorias</strong></p>
+                    <label>
+                        <input type="radio" name="categorias" value="Mixtas">
+                        Mixtas
+                    </label>
+                
+                    <label>
+                        <input type="radio" name="categorias" value="Seleccionar varias">
+                        Seleccionar varias
+                    </label>
+                </div>
+
+            </form>
+            </div>
     </section>
     
 </body>

@@ -3,3 +3,9 @@
     src: url("./fonts/IrishGrover-Regular.ttf") format('truetype');
     font-weight: 600;
 }
+
+@font-face {
+    font-family: 'Grandstander';
+    src: url("./fonts/static/Grandstander-Regular.ttf") format('truetype');
+    font-weight: 400;
+}
