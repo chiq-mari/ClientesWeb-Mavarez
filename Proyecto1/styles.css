@@ -160,3 +160,59 @@ main{
 #crearSuma:hover {
     transform: scale(1.05);
 }
+
+#matrices-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin: 10px 0;
+}
+
+.symbol{
+    margin: 0;
+    font-size: 1.5rem; /* tamaño del signo + y = */
+    width: 30px;
+    color: #2e27aa;
+}
+
+.seccionMatriz{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    
+
+}
+
+.matriz-grid{
+    
+    gap: 2px;
+    justify-items: center;
+}
+
+.matriz-cells{
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    background-color: #a1a1a1;
+    border: 1px solid black;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.matriz-cells input{
+    text-align: center;
+    padding: 0;
+}
+
+.seccionButtons{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+
+}
